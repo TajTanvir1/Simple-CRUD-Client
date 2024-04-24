@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './App.css'
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
     .then(res => res.json())
     .then(data =>{
       console.log(data);
+      if(data.insertedId){
+        alert('Users Added Successfully');
+        form.reset();
+      }
     })
 
 
@@ -36,6 +41,8 @@ function App() {
         <br />
         <input type="submit" value='Add User' />
       </form>
+
+      <Link to='/users'>Users</Link>
     </>
   )
 }
