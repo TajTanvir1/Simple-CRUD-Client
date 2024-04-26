@@ -8,7 +8,8 @@ const Users = () => {
 
    const handleDelete = _id => {
       console.log('delete', _id)
-      fetch(`http://localhost:5000/users/${_id}`,{
+      fetch(`https://simple-crud-server-topaz.vercel.app/${_id}`,{
+         mode: 'no-cors',
          method: 'DELETE'
       })
       .then(res => res.json())
@@ -21,6 +22,7 @@ const Users = () => {
          }
       })
    }
+   
 
    return (
       <div>
@@ -28,6 +30,9 @@ const Users = () => {
          <div>
             {
                users.map(user => <p key={user._id}>{user.name} :  {user.email} :  {user._id}
+               <Link to={`/update/${user._id}`}>
+               <button>Update</button>
+               </Link>
                   <button onClick={() => handleDelete(user._id)}
                   >X</button></p>)
             }
